@@ -2,7 +2,7 @@ import java.io.*;
 
 public class ones {
     public static void main(String[] args) {
-
+        int summ = 0;
         try {
             File input = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\INPUT.TXT");
             File output = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\OUTPUT.TXT");
@@ -15,12 +15,14 @@ public class ones {
             // считаем сначала первую строку
             String line = reader.readLine();
             int x = Integer.parseInt(line);
-            String out = String.format("%8s", Integer.toBinaryString((x) & 0xFF)).replace(' ', '0');
-            System.out.print(out);
-            for (int i = 0; i <out.length() ; i++) {
-                if (out.charAt(1, i)){}
+            String outStr = String.format("%8s", Integer.toBinaryString((x) & 0xFF)).replace(' ', '0');
+            System.out.print(outStr);
+            for (int i = 0; i < outStr.length(); i++) {
+                if (outStr.charAt(i) == 1) summ++;
             }
-            writer.write(out);
+            System.out.println(summ);
+            String str = String.valueOf(summ);
+            writer.write(str);
             writer.flush();
         } catch (IOException e) {
             e.printStackTrace();
