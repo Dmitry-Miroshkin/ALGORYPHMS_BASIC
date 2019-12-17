@@ -18,7 +18,7 @@ public class ones {
             String outStr = String.format("%8s", Integer.toBinaryString((x) & 0xFF)).replace(' ', '0');
             System.out.print(outStr);
             for (int i = 0; i < outStr.length(); i++) {
-                if (outStr.charAt(i) == 1) summ++;
+//                if (outStr.charAt(i) == 1) summ++;
             }
             System.out.println(summ);
             String str = String.valueOf(summ);
