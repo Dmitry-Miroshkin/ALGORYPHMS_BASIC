@@ -2,10 +2,11 @@ import java.io.*;
 
 public class ones {
     public static void main(String[] args) {
-        int summ = 0;
+
         try {
-            File input = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\INPUT.TXT");
-            File output = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\OUTPUT.TXT");
+            File directory = new File("./src");
+            File input = new File(directory.getCanonicalPath()+"\\"+"input.txt");
+            File output = new File(directory.getCanonicalPath()+"\\"+"output.txt");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(input);
             FileWriter fileWriter = new FileWriter(output);
@@ -16,10 +17,7 @@ public class ones {
             String line = reader.readLine();
             int x = Integer.parseInt(line);
             String outStr = String.format("%8s", Integer.toBinaryString((x) & 0xFF)).replace(' ', '0');
-            System.out.print(outStr);
-            for (int i = 0; i < outStr.length(); i++) {
-//                if (outStr.charAt(i) == 1) summ++;
-            }
+            int summ = (int) outStr.codePoints().filter(ch -> ch == '1').count();
             System.out.println(summ);
             String str = String.valueOf(summ);
             writer.write(str);
