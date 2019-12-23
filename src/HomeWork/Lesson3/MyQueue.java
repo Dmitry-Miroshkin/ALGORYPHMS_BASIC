@@ -1,20 +1,24 @@
 package HomeWork.Lesson3;
 
+
 import java.util.EmptyStackException;
 
-public class MyStack<T> {
+public class MyQueue<T> {
     private T[] list;
     private int size = 0;
     private final int DEFAULT_CAPACITY = 10;
+    private int begin = 0;
+    private int end = 0;
 
-    public MyStack(int capacity) {
+
+    public MyQueue(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Capacity WRONG: " + capacity);
         }
         list = (T[]) new Object[capacity];
     }
 
-    public MyStack() {
+    public MyQueue() {
 
         list = (T[]) new Object[DEFAULT_CAPACITY];
     }
@@ -31,26 +35,32 @@ public class MyStack<T> {
         return size;
     }
 
-    public void push(T value) {
+    public void insert(T value) {
         if (isFull()) {
             throw new StackOverflowError();
         }
-        list[size] = value;
+        list[end] = value;
         size++;
+        end = nextIndex(end);
     }
 
-    public T peek() {
+    public T peekFront() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        return list[size - 1];
+        return list[begin];
     }
 
-    public T pop() {
-        T temp = peek();
+    public T remove() {
+        T temp = peekFront();
         size--;
-        list[size] = null;
+        list[begin] = null;
+        begin = nextIndex(begin);
         return temp;
+    }
+
+    private int nextIndex(int index) {
+        return (index + 1) % list.length;
     }
 }
 
