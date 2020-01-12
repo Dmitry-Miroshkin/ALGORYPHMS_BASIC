@@ -1,6 +1,7 @@
 package HomeWork.Lesson4;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 public class MyLinkedList<T> implements Iterable<T> {
@@ -12,6 +13,8 @@ public class MyLinkedList<T> implements Iterable<T> {
     public Iterator<T> iterator() {
         return new Iter();
     }
+
+    public ListIterator<T> linkiterator() { return new Liter(); }
 
     public T getFirst() {
         return (T) first.value;
@@ -66,6 +69,52 @@ public class MyLinkedList<T> implements Iterable<T> {
         public T next() {
             current = current.next;
             return (T) current.value;
+        }
+    }
+
+    private class Liter implements ListIterator<T> {
+        Node current = new Node(null, first);
+
+        @Override
+        public boolean hasNext() {
+            return current.next != null;
+        }
+
+        @Override
+        public T next() {
+            current = current.next;
+            return (T) current.value;
+        }
+
+        @Override
+        public boolean hasPrevious() {
+            return current.prev != null;
+        }
+
+        @Override
+        public T previous() {
+            current = current.prev;
+            return (T) current.value;
+        }
+
+        @Override
+        public int nextIndex() {throw new UnsupportedOperationException("nextIndex()");
+        }
+
+        @Override
+        public int previousIndex() {throw new UnsupportedOperationException("previousIndex()");
+        }
+
+        @Override
+        public void remove() {throw new UnsupportedOperationException("remove");
+        }
+
+        @Override
+        public void set(T t) {throw new UnsupportedOperationException("set");
+        }
+
+        @Override
+        public void add(T t) {throw new UnsupportedOperationException("add");
         }
     }
 

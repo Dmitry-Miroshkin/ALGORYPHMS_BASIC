@@ -1,12 +1,15 @@
 package HomeWork.Lesson4;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 public class MainClass {
     public static void main(String[] args) {
-//        MyLinkedList list = new MyLinkedList();
-//        list.addFirst("Berty");
-//        list.addFirst("Clair");
-//        list.addFirst("Stuart");
-//        System.out.println(list);
+        MyLinkedList list = new MyLinkedList();
+        list.addFirst("Berty");
+        list.addFirst("Clair");
+        list.addFirst("Stuart");
+        System.out.println(list);
 //        System.out.println(list.getFirst());
 //        System.out.println(list.getLast());
 //        System.out.println(list.getSize());
@@ -32,20 +35,32 @@ public class MainClass {
 //        System.out.println("размер очереди: " + queue.size());
 //        System.out.println(queue.peek());
 
-        MyOneLinkedList myOneLinkedList = new MyOneLinkedList();
-        myOneLinkedList.insertFirst("1");
-        myOneLinkedList.insertFirst("2");
-        myOneLinkedList.insertFirst("3");
-        myOneLinkedList.insertFirst(4);
-        System.out.println(myOneLinkedList);
-        myOneLinkedList.insert(3, "6");
-        System.out.println(myOneLinkedList);
-        System.out.println(myOneLinkedList.removeFirst());
-        System.out.println(myOneLinkedList.remove("6"));
-        System.out.println(myOneLinkedList);
-        System.out.println("индекс значения 3: " + myOneLinkedList.indexOf("3"));
-        System.out.println("Список пуст?: " + myOneLinkedList.isEmpty());
-        System.out.println("Есть ли в списке значение 5?: " + myOneLinkedList.contains("5"));
-        System.out.println("Первый в списке: " + myOneLinkedList.getFirst());
+//        MyOneLinkedList myOneLinkedList = new MyOneLinkedList();
+//        myOneLinkedList.insertFirst("1");
+//        myOneLinkedList.insertFirst("2");
+//        myOneLinkedList.insertFirst("3");
+//        myOneLinkedList.insertFirst(4);
+//        System.out.println(myOneLinkedList);
+//        myOneLinkedList.insert(3, "6");
+//        System.out.println(myOneLinkedList);
+//        System.out.println(myOneLinkedList.removeFirst());
+//        System.out.println(myOneLinkedList.remove("6"));
+//        System.out.println(myOneLinkedList);
+//        System.out.println("индекс значения 3: " + myOneLinkedList.indexOf("3"));
+//        System.out.println("Список пуст?: " + myOneLinkedList.isEmpty());
+//        System.out.println("Есть ли в списке значение 5?: " + myOneLinkedList.contains("5"));
+//        System.out.println("Первый в списке: " + myOneLinkedList.getFirst());
+
+        Iterator<String> iterator = list.iterator();
+        while(iterator.hasNext()){
+            System.out.print(iterator.next()+" ");
+        }
+        ListIterator<String> linkiter = list.linkiterator();
+        while (linkiter.hasNext()){
+            System.out.print(linkiter.next()+" ");
+        }
+        while (linkiter.hasPrevious()){
+            System.out.println(linkiter.previous()+" ");
+        }
     }
 }
