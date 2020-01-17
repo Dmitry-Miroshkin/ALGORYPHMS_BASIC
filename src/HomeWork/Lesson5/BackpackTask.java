@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class BackpackTask {
 
 
-    static ArrayList<Item> items;
+    //    static ArrayList<Item> items;
+    static ArrayList<Item> items = new ArrayList<>();
 
-    static void AddItems() {
-        ArrayList<Item> items = new ArrayList<>();
+    public static void AddItems() {
+
 
         items.add(new Item("Книга", 1, 600));
         items.add(new Item("Бинокль", 2, 5000));
@@ -31,19 +32,18 @@ public class BackpackTask {
         Backpack bp = new Backpack(8);
 
         bp.MakeAllSets(items);
-        System.out.println(items.isEmpty());
         ArrayList<Item> solve = bp.GetBestSet();
 
         if (solve.isEmpty()) {
             System.out.println("Нет решения!");
         } else {
-            ShowItems(solve);
+            System.out.println(ShowItems(solve));
         }
     }
 
     public static void main(String[] args) {
         AddItems();
-        ShowItems(items);
+        System.out.println(ShowItems(items));
 
         Solve();
     }
