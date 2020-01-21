@@ -3,7 +3,7 @@ package HomeWork.Lesson6;
 import java.util.NoSuchElementException;
 
 public class MyDigitTree {
-    private Node root;
+    Node root;
 
     private class Node {
 
@@ -23,11 +23,34 @@ public class MyDigitTree {
         return size(root);
     }
 
+    int height(Node node) {
+        /* базовое дерево пусто */
+        if (node == null)
+            return 0;
+        /* Если дерево не пустое, то высота = 1 + максимум слева
+        высота и правая высота */
+        return 1 + Math.max(height(node.left), height(node.right));
+    }
+
     private int size(Node node) {
         if (node == null) {
             return 0;
         }
         return node.size;
+    }
+
+    boolean isBalanced(Node node) {
+        int lh; /* для высоты левого поддерева */
+        int rh; /* для высоты правого поддерева */
+        /* Если дерево пусто, вернуть true */
+        if (node == null)
+            return true;
+        /* Получить высоту левого и правого поддеревьев */
+        lh = height(node.left);
+        rh = height(node.right);
+        if (lh - rh > 1 || rh - lh > 1) {
+            return false;
+        } else return true;
     }
 
     public boolean isEmpty() {
@@ -37,6 +60,13 @@ public class MyDigitTree {
     public final int get(int size) {
 
         return get(root, size);
+    }
+
+    public final int get(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.value;
     }
 
     private int get(Node node, int size) {
