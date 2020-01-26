@@ -52,9 +52,13 @@ public class ChainingHashMap<Key, Value> {
         isKeyNotNull(key);
         int i = hash(key);
         for (Node node : st[i]) {
-            if (key.equals(node.key) || (node.key == "D")) {
+            if (key.equals(node.key)) {
                 node.value = value;
+                return;
+            } else if (node.key == "D") {
                 node.key = key;
+                node.value = value;
+                size++;
                 return;
             }
         }

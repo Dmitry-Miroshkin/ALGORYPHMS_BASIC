@@ -13,5 +13,7 @@ public class Main {
         System.out.println(map);
         map.put(3, "three");
         System.out.println(map.get(3));
+        System.out.println(map.delete(7));
+        System.out.println(map.size());
     }
 }
