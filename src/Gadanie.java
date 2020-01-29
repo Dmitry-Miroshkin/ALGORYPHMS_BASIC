@@ -4,8 +4,9 @@ public class Gadanie {
     public static void main(String[] args) {
         int s = 0;
         try {
-            File input = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\INPUT.TXT");
-            File output = new File("C:\\Users\\user\\IdeaProjects\\Алгоритмы и структуры данных на Java. Базовый курс\\src\\OUTPUT.TXT");
+            File directory = new File("./src");
+            File input = new File(directory.getCanonicalPath()+"\\"+"INPUT.TXT");
+            File output = new File(directory.getCanonicalPath()+"\\"+"OUTPUT.TXT");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(input);
             FileWriter fileWriter = new FileWriter(output);
